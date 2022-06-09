@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GetlistaService } from './getlista.service';
 
@@ -13,6 +12,7 @@ export class ListaComponent implements OnInit {
   constructor(private getlistaService: GetlistaService) {}
 
   ngOnInit(): void {
-    this.articulos = this.getlistaService.retornar();
+    this.getlistaService.retornar()
+      .subscribe(result => this.articulos = result)
+    }
   }
-}
